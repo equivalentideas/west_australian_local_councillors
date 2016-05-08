@@ -6,8 +6,9 @@ require 'mechanize'
 
 # Remove councillor whatnot
 def simplify_name(text)
-  if text.split(" ").first =~ /(Cr|Ald|Mr)/
-    text.split(" ")[1..-1].join(" ")
+  text.strip!
+  if text.start_with?("Cr", "Ald")
+    text.sub(/^(Cr|Ald)\W/, "")
   else
     text
   end
