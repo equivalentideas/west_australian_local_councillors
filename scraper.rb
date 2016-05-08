@@ -19,7 +19,7 @@ def create_id(council, name)
 end
 
 def scrape_council_page(page)
-  council = page.at(:h1).text
+  council = page.at(:h1).text + " Council"
   puts "Scraping councillors for #{council}"
 
   council_data_keys = page.at("h1 + div").search(:strong)
