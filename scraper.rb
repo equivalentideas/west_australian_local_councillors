@@ -6,6 +6,7 @@ require 'mechanize'
 
 # Remove councillor whatnot
 def simplify_name(text)
+  text.gsub!(/[[:space:]]/, " ")
   text.strip!
   if text.start_with?("Cr", "Ald")
     text.sub(/^(Cr|Ald)\W/, "")
