@@ -26,7 +26,7 @@ def scrape_council_page(page)
 
   council_data_keys = page.at("h1 + div").search(:strong)
   council_email = council_data_keys.select {|key| key.text.include? "Email:" }[0].next_sibling.text
-  council_website = council_data_keys.select {|key| key.text.include? "site:" }[0].next_sibling[:href]
+  council_website = council_data_keys.select {|key| key.text.include? "site:" }[0].next_element[:href]
 
   mayor_name = simplify_name(council_data_keys.select {|key| key.text.include? "Mayor:" }[0].next_sibling.text)
   deputy_mayor_name = simplify_name(council_data_keys.select {|key| key.text.include? "Deputy" }[0].next_sibling.text)
