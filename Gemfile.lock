@@ -44,4 +44,8 @@ PLATFORMS
 
 DEPENDENCIES
   mechanize
+  pry
   scraperwiki!
+
+BUNDLED WITH
+   1.11.2
