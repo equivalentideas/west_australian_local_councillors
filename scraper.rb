@@ -3,6 +3,7 @@
 
 require 'scraperwiki'
 require 'mechanize'
+require 'pry'
 
 # This is the CSV export URL for the spreadsheet provided by the fine folks at  dlgc.wa.gov.au:
 # https://docs.google.com/spreadsheets/d/1J1SShMPYBuGVAHY7LfDiTiHV72Tph8ObxbhlCoo7nn8/edit#gid=1431929499
