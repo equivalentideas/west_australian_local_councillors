@@ -4,6 +4,12 @@
 require 'scraperwiki'
 require 'mechanize'
 
+# This is the CSV export URL for the spreadsheet provided by the fine folks at  dlgc.wa.gov.au:
+# https://docs.google.com/spreadsheets/d/1J1SShMPYBuGVAHY7LfDiTiHV72Tph8ObxbhlCoo7nn8/edit#gid=1431929499
+def google_sheets_export_url
+  "https://docs.google.com/feeds/download/spreadsheets/Export?key=1J1SShMPYBuGVAHY7LfDiTiHV72Tph8ObxbhlCoo7nn8&exportFormat=csv&gid=1431929499"
+end
+
 # Remove councillor whatnot
 def simplify_name(text)
   text.gsub!(/[[:space:]]/, " ")
