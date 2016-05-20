@@ -53,10 +53,11 @@ def scrape_council_page(page)
       name: name,
       executive: executive,
       council: council,
-      council_website: council_website,
+      # council_website: council_website,
       id: create_id(council, name),
-      council_email: council_email,
-      term_ends: councillor_element.search(:td).last.text
+      # council_email: council_email,
+      # term_ends: councillor_element.search(:td).last.text
+      gender: ""
     }
 
     ScraperWiki.save_sqlite([:id], councillor)
