@@ -31,7 +31,7 @@ def create_id(council, name)
   components.downcase.gsub(" ","_")
 end
 
-CSV.parse(open(google_sheets_export_url).read)[1..-1].each do |row|
+CSV.parse(open(google_sheets_export_url).read, headers: true) do |row|
   name = parse_name(row[2])
 
   council = row.first + " Council"
