@@ -31,14 +31,16 @@ def create_id(council, name)
   components.downcase.gsub(" ","_")
 end
 
-CSV.parse(open(google_sheets_export_url).read)[1..-1].each do |row|
-  name = parse_name(row[2])
+CSV.parse(open(google_sheets_export_url).read, headers: true) do |row|
+  member = row["Member"]
+  ward = row["Ward"]
+  name = parse_name(member)
 
-  council = row.first + " Council"
+  council = row["Local Government"] + " Council"
 
-  gender = if row[2].end_with? "(F)"
+  gender = if member.end_with? "(F)"
     "female"
-  elsif row[2].end_with? "(M)"
+  elsif member.end_with? "(M)"
     "male"
   else
     nil
@@ -46,9 +48,9 @@ CSV.parse(open(google_sheets_export_url).read)[1..-1].each do |row|
 
   p councillor = {
     name: name,
-    executive: row[1] =~ /(mayor){1}/i ? "Mayor" : nil,
+    executive: ward =~ /(mayor){1}/i ? "Mayor" : nil,
     council: council,
-    ward: row[1],
+    ward: ward,
     id: create_id(council, name),
     gender: gender
   }
